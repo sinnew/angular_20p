@@ -1,0 +1,68 @@
+<h2>Required Information</h2>
+<form [formGroup]="requiredForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title" formControlName="title" required />
+    <p>What do you want to sell?</p>
+  </div>
+
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input type="number" class="form-control" id="price" formControlName="price" required />
+    <p>For how much?</p>
+  </div>
+  <!-- free/get suggetsions from buyers -->
+
+  <div class="form-group">
+    <label for="category">Category</label>
+    <select class="form-control" id="category" formControlName="category" required>
+      <option *ngFor="let category of categories" [value]="category">
+        {{ category }}
+      </option>
+    </select>
+    <p>Let buyers find your item easy</p>
+  </div>
+
+  <div class="form-group">
+    <label for="shipping">Shipping Method</label>
+    <select class="form-control" id="shipping" formControlName="shipping" required>
+      <option *ngFor="let shipping of shippings" [value]="shipping">
+        {{ shipping }}
+      </option>
+    </select>
+    <p>How will you send the item?</p>
+  </div>
+  <div class="form-group">
+    <label for="location">Location</label>
+    <select class="form-control" id="location" formControlName="location" required>
+      <option *ngFor="let location of locations" [value]="location">
+        {{ location }}
+      </option>
+    </select>
+    <p>Where you want to exchange/send the item from?</p>
+  </div>
+
+  <div class="form-group">
+    <label for="contact">Contact</label>
+    <input type="text" class="form-control" id="contact" formControlName="contact" required />
+    <p>Your Phone# or Email address</p>
+  </div>
+
+  <button type="submit" class="btn btn-info">Save as Draft</button>
+  <!-- <button type="register" class="btn btn-success">Register</button> -->
+</form>
+
+<p>Form Value: {{ requiredForm.value | json }}</p>
+
+<p>Form Status: {{ requiredForm.status }}</p>
+
+
+<div class="overlay" *ngIf="popup">
+	<div class="popup">
+		<h2>submitted</h2>
+		<a class="close" (click)="popup = false">&times;</a>
+		<div class="content">
+      {{ requiredForm.value | json }}
+		</div>
+	</div>
+</div>

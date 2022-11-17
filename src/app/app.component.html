@@ -1,0 +1,21 @@
+<h1>Register Item</h1>
+
+<nav>
+  <button type="button" (click)="toggleEditor('required')">Required</button>
+  <button type="button" (click)="toggleEditor('details')">Details</button>
+  <button type="button" (click)="toggleEditor('photos')">Photos</button>
+  <button type="button" (click)="toggleEditor('profile')">profile</button>
+</nav>
+
+<!-- <app-name-editor *ngIf="showNameEditor"></app-name-editor> -->
+<app-profile-editor *ngIf="showProfileEditor"></app-profile-editor>
+
+<app-required-editor *ngIf="showRequiredEditor"></app-required-editor>
+<app-details-editor *ngIf="showDetailsEditor"></app-details-editor>
+<app-photos-editor *ngIf="showPhotosEditor"></app-photos-editor>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->

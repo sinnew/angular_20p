@@ -1,0 +1,59 @@
+<form [formGroup]="detailsForm" (ngSubmit)="onSubmit()">
+  <h2>Item Details</h2>
+  <div class="form-group">
+    <label for="size">Size</label>
+    <input type="text" class="form-control" id="size" formControlName="size" />
+    <p>How big is your item?</p>
+  </div>
+
+  <div class="form-group">
+    <label for="purchased">Purchased Date</label>
+    <input
+      type="date"
+      class="form-control"
+      id="purchased"
+      formControlName="purchased"
+    />
+    <p>When did you buy it?</p>
+  </div>
+
+  <div class="form-group">
+    <label for="condition">Condition</label>
+    <select class="form-control" id="condition" formControlName="condition">
+      <option *ngFor="let condition of conditions" [value]="condition">
+        {{ condition }}
+      </option>
+    </select>
+    <p>How used is your item?</p>
+  </div>
+  <div class="form-group">
+    <label for="reference">Reference Link</label>
+    <input
+      type="link"
+      class="form-control"
+      id="reference"
+      formControlName="reference"
+    />
+    <p>EC site you bought it/official site of the item/etc.</p>
+  </div>
+
+  <div class="form-group">
+    <label for="tags">#tags</label>
+    <input type="text" class="form-control" id="tags" formControlName="tags" />
+  </div>
+
+  <button type="submit" class="btn btn-info">Save as Draft</button>
+</form>
+
+<p>Form Value: {{ detailsForm.value | json }}</p>
+<p>Form Status: {{ detailsForm.status }}</p>
+
+<div class="overlay" *ngIf="popup">
+  <div class="popup">
+    <h2>submitted</h2>
+    <a class="close" (click)="popup = false">&times;</a>
+    <div class="content">
+      {{ detailsForm.value | json }}
+    </div>
+  </div>
+</div>
